@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlotTwist</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <img src="assets/PlotTwistLogo.png" width="200" height="200" style="border-radius: 30px; margin-top: 0px; margin-left: 30px;">
+        <ul>
+            <li class="menu-item" onclick="showPage('home')">Home</li>
+            <li class="menu-item" onclick="showPage('saved')">Saved</li>
+            <li class="menu-item" onclick="showPage('books')">Books</li>
+            <li class="menu-item" onclick="showPage('movies')">Movies/TV Shows</li>
+        </ul>
+        <div id="logout" onclick="logout()">Logout</div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <div id="home" class="page active">
+            <h1>Welcome to PlotTwist 🎬📚</h1>
+            <p>Your personalized media recommendation app.</p>
+            <button onclick="myFunction()">Click me</button>
+            <p id="click_here"></p>
+        <script>
+        function myFunction()
+        {
+            document.getElementByID("click_here").innerHTML = "Good Morning";
+        }
+
+        </script>
+
+        <div id="saved" class="page">
+            <h1>Saved Items</h1>
+            <p>This is where saved books & movies will appear.</p>
+        </div>
+        <div id="books" class="page">
+            <h1>Books</h1>
+            <p>Search for books here.</p>
+        </div>
+        <div id="movies" class="page">
+            <h1>Movies/TV Shows</h1>
+            <p>Search for movies here.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
