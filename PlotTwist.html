@@ -23,17 +23,12 @@
     <!-- Main Content -->
     <div id="main-content">
         <div id="home" class="page active">
-            <h1>Welcome to PlotTwist 🎬📚</h1>
-            <p>Your personalized media recommendation app.</p>
-            <button onclick="myFunction()">Click me</button>
-            <p id="click_here"></p>
-        <script>
-        function myFunction()
-        {
-            document.getElementByID("click_here").innerHTML = "Good Morning";
-        }
-
-        </script>
+            <header>
+                <form id="form">
+                    <input type="text" placeholder="Find Media..." id="search" class="search">
+                </form>
+            </header>
+            <h1>Explore</h1>
 
         <div id="saved" class="page">
             <h1>Saved Items</h1>
