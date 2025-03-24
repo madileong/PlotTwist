@@ -26,11 +26,20 @@
             <div>
                 <form id="form">
                     <center>
-                        <div style="align-items: center;">
-                            <p style="margin: 5px;"> Select to convert from: </p>
-                            <button type="button" style="margin-top: 0px;">Book</button>
-                            <button type="button" style="margin-top: 0px;">Movie</button>
+                        <div id="bookOrMovieToggle" style="align-items: center;">
+                            <p style="margin: 5px;">Select to convert from:</p>
+                            <button class="toggleButton selected" type="button">Book</button>
+                            <button class="toggleButton" type="button">Movie</button>
                         </div>
+
+                        <script>
+                            document.getElementById("bookOrMovieToggle").addEventListener("click", function (e) {
+                                if (e.target.classList.contains("toggleButton")) {
+                                document.querySelectorAll(".toggleButton").forEach(btn => btn.classList.remove("selected"));
+                                e.target.classList.add("selected");
+                            }
+                            });
+                        </script>
                         <br>
 
                         <div>

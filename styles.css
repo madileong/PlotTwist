@@ -70,19 +70,24 @@ ul {
     display: block;
 }
 
-button {
-    background-color: #e8d9ec; /* Default color */
+.toggleButton {
+    background-color: #e8d9ec;
     color: black;
     border: none;
     border-radius: 12px;
-    padding: 6px;
-    padding-inline: 10px;
+    padding: 6px 10px;
+    transition: background-color 0.2s;
 }
 
-button:hover {
-    background-color: #cec1d1; /* Color on hover */
+.toggleButton:hover {
+    background-color: #cec1d1;
 }
 
-button:active {
-    background-color: #c689d6; /* Color when clicked */
+.toggleButton:active {
+    background-color: #c689d6;
+}
+
+.toggleButton.selected {
+    background-color: #c689d6;
+    color: white;
 }
