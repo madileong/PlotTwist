@@ -69,3 +69,20 @@ ul {
 .page.active {
     display: block;
 }
+
+button {
+    background-color: #e8d9ec; /* Default color */
+    color: black;
+    border: none;
+    border-radius: 12px;
+    padding: 6px;
+    padding-inline: 10px;
+}
+
+button:hover {
+    background-color: #cec1d1; /* Color on hover */
+}
+
+button:active {
+    background-color: #c689d6; /* Color when clicked */
+}
