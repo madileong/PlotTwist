@@ -1,35 +1,67 @@
 const dropdown = document.getElementById('exploreDropdown');
 const container = document.getElementById('mediaContainer');
 
-const booksAPI = 'https://www.googleapis.com/books/v1/volumes?q=harry+potter&key=AIzaSyDgIXd8KXZwlzkhN7gw1prj-1b1dWwkS0w'
-const moviesAPI = 'http://www.omdbapi.com/?apikey=e9a00f76&s=harry+potter'
-
 async function fetchData(type) {
     let books = [];
     let movies = [];
 
+    const seenBookTitles = new Set();
+    const seenMovieTitles = new Set();
+
     try {
         if (type === 'books' || type === 'all') {
-            const booksResponse = await fetch(booksAPI);
-            const booksData = await booksResponse.json();
+            let startIndex = 0;
 
-            books = (booksData.items || []).map(book => ({
-                title: book.volumeInfo.title,
-                mediaType: 'Book'
-            }));
+            while (books.length < 50 && startIndex <= 100) {
+                const url = `https://www.googleapis.com/books/v1/volumes?q=the&startIndex=${startIndex}&maxResults=10&key=AIzaSyDgIXd8KXZwlzkhN7gw1prj-1b1dWwkS0w`;
+                startIndex += 10;
+
+                const res = await fetch(url);
+                const data = await res.json();
+
+                if (data.items) {
+                    data.items.forEach(book => {
+                        const title = book.volumeInfo.title;
+                        if (title && !seenBookTitles.has(title) && books.length < 50) {
+                            seenBookTitles.add(title);
+                            books.push({
+                                title: title,
+                                mediaType: 'Book'
+                            });
+                        }
+                    });
+                }
+            }
         }
 
         if (type === 'movies' || type === 'all') {
-            const moviesResponse = await fetch(moviesAPI);
-            const moviesData = await moviesResponse.json();
-      
-            movies = (moviesData.Search || []).map(movie => ({
-                title: movie.Title || movie.title,
-                mediaType: 'Movie'
-            }));
+            let page = 1;
+        
+            while (movies.length < 50 && page <= 10) {
+                const url = `https://www.omdbapi.com/?apikey=e9a00f76&s=star&page=${page}`;
+                page++;
+        
+                const res = await fetch(url);
+                const data = await res.json();
+        
+                if (data.Response === "True" && data.Search) {
+                    data.Search.forEach(movie => {
+                        const title = movie.Title;
+                        if (title && !seenMovieTitles.has(title) && movies.length < 50) {
+                            seenMovieTitles.add(title);
+                            movies.push({
+                                title: title,
+                                mediaType: 'Movie'
+                            });
+                        }
+                    });
+                } else {
+                    console.warn(`OMDb response issue on page ${page - 1}: ${data.Error}`);
+                    break;
+                }
+            }
         }
 
-        console.log(books);
         const allMedia = [...books, ...movies];
         renderItems(allMedia);
     } catch (error) {
@@ -44,14 +76,14 @@ function renderItems(items) {
         mediaContainer.innerHTML = '<p>No media found</p>';
         return;
     }
-  
+
     items.forEach(item => {
         const div = document.createElement('div');
         div.className = 'item';
-      
+
         const title = item.title || item.name || 'Untitled';
         const type = item.mediaType || 'Media';
-  
+
         div.textContent = `${title} (${type})`;
         mediaContainer.appendChild(div);
     });
