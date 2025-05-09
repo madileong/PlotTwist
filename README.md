@@ -33,7 +33,7 @@ Open the `script.js` file and find this line near the top:
 const OPENAI_API_KEY = "YOUR_OPENAI_API_KEY_HERE";
 ```
 
-Replace `"your_api_key_here"` with your actual OpenAI API key.
+Replace `"YOUR_OPENAI_API_KEY_HERE"` with your actual OpenAI API key.
 
 > 🛡️ **Important:** Do not commit your key to any public repository. This placeholder is here to allow safe publishing.
 
