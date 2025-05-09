@@ -3,6 +3,7 @@
 **PlotTwist** is a web app that recommends movies and books using OpenAI's GPT API. Enter a search term (a book or movie title), and it’ll return a mix of titles in a fun JSON-based UI.
 
 ## 🔮 Features
+
 - Get AI-generated movie and book recommendations
 - Click to save media to your personal list
 - Clear saved items at any time
@@ -14,6 +15,7 @@
 > ⚠️ You’ll need your own OpenAI API key to test the recommendation features.
 
 ### 1. Clone the repo
+
 ```bash
 git clone https://github.com/yourusername/plottwist.git
 cd plottwist
@@ -28,7 +30,7 @@ You can open `index.html` directly in your browser, or use Live Server in VS Cod
 Open the `script.js` file and find this line near the top:
 
 ```js
-const OPENAI_API_KEY = "your_api_key_here";
+const OPENAI_API_KEY = "YOUR_OPENAI_API_KEY_HERE";
 ```
 
 Replace `"your_api_key_here"` with your actual OpenAI API key.
@@ -45,6 +47,7 @@ Replace `"your_api_key_here"` with your actual OpenAI API key.
 ## 🧪 Testing Notes for Professor / Reviewers
 
 To test the project:
+
 - Email me at **[your_email@example.com]** to request a testable version with a working API key, or use your own key from [OpenAI’s dashboard](https://platform.openai.com/account/api-keys).
 - This project uses the GPT-3.5-turbo `chat/completions` endpoint.
 - JSON responses are parsed and displayed dynamically.
