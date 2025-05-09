@@ -48,7 +48,7 @@ Replace `"YOUR_OPENAI_API_KEY_HERE"` with your actual OpenAI API key.
 
 To test the project:
 
-- Email me at **[your_email@example.com]** to request a testable version with a working API key, or use your own key from [OpenAI’s dashboard](https://platform.openai.com/account/api-keys).
+- Email me at **[madison.leong@sjsu.edu]** to request a testable version with a working API key, or use your own key from [OpenAI’s dashboard](https://platform.openai.com/account/api-keys).
 - This project uses the GPT-3.5-turbo `chat/completions` endpoint.
 - JSON responses are parsed and displayed dynamically.
 
